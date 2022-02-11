@@ -38,8 +38,8 @@ contract Crystals is ERC721 {
     uris =  [];
   }
 
-  uint256 public constant limit = 303;
-  uint256 public price = 0.0033 ether;
+  uint256 public constant limit = 420;
+  uint256 public price = 0.05 ether;
 
   function mintItem(address to, string memory tokenURI)
       private
@@ -60,7 +60,6 @@ contract Crystals is ERC721 {
       payable
   {
     require( msg.value >= price, "NOT ENOUGH");
-    price = (price * 1047) / 1000;
     (bool success,) = kag.call{value:msg.value}("");
     require( success, "could not send");
     mintItem(to, uris[_tokenIds.current()]);
