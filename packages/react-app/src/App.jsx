@@ -436,7 +436,7 @@ function App(props) {
               <img class="logo_moonshot" src="logo1.png" />
               <img class="logo_moonshot sub" src="logo2.png" />
               <br />
-              <h1>Moonshot Bots</h1>
+              <h1>AI Generated Crystals</h1>
 
               <h2>An ⭐️Ultra-Rare⭐️ AI Generated PFP (420 max supply)</h2>
               <h2>
@@ -452,41 +452,21 @@ function App(props) {
                     type={"primary"}
                     onClick={async () => {
                       let priceRightNow = await readContracts.Crystals.price();
-                      //priceRightNow = priceRightNow.mul(1098).div(1000);//up the price by 3% for the initial launch to avoid errors?
                       tx(writeContracts.Crystals.requestMint(address, { value: priceRightNow }));
                     }}
                   >
-                    MINT for Ξ{priceToMint && (+ethers.utils.formatEther(priceToMint)).toFixed(4)}
+                    MINT for .05Ξ 
                   </Button>
                 ) : (
                   <Button key="loginbutton" type="primary" onClick={loadWeb3Modal}>
                     connect to mint
                   </Button>
                 )}
-                <p>Your purchase of the Bot NFT does NOT CONSTITUTE AN INVESTMENT.</p>
-
-                <div class="publicgoodsgood">
-                  <h2>🌱❤️100% Proceeds To Public Goods❤️🌱</h2>
-                  🦧✊ <strong>Demand more from PFPs! 👇</strong> <br />
-                  🌱🌱 <strong>100%</strong> of MoonshotBot Minting Fees go to fund Ethereum Public Goods on Gitcoin
-                  Grants 🌱🌱 <br />
-                  <strong>🦧✊🌱100%🌱✊🦧</strong>
-                </div>
-                <br />
-                <br />
-                <div class="bondingcurvegood">
-                  <h2>Purchase Price Determined by a Bonding Curve</h2>
-                  <strong>👇 Click the chart to see the pricing model 👇</strong> <br />
-                  <a href="https://docs.google.com/spreadsheets/d/1TCdfHjCs21frJyNaR7EYtZ-zZ7xXW8vtoTH9_Qvie70/edit#gid=0">
-                    <img src="chartarrow.png" class="chart" />
-                  </a>
-                </div>
-                <br />
-                <br />
+                
 
                 {latestMintedCrystals && latestMintedCrystals.length > 0 ? (
                   <div class="latestBots">
-                    <h2>Latest Minted Bots</h2>
+                    <h2>Latest Minted Crystals</h2>
 
                     <List
                       dataSource={latestMintedCrystals}
@@ -524,58 +504,22 @@ function App(props) {
                 <div></div>
               ) : (
                 <div class="colorme2">
-                  <h4 style={{ padding: 5 }}>Why We Think MoonShotBots Rock:</h4>
+                  <h4 style={{ padding: 5 }}>Why We Think Crystals Rock:</h4>
                   <br />
                   <br />
                   <ul class="rocks">
                     <li>🤖🍠 Fair Launch</li>
                     <li>🤖👑 Ultra Super Mega Giga-Chad Rare</li>
-                    <li>🤖🌱 All Proceeds Support Public Goods</li>
-                    <li>
-                      🤖🛠 Early Holders are <a href="https://moonshotcollective.space">Moonshot Collective</a> Builders
-                    </li>
-                    <li>
-                      🤖❤️ Hang with your botfrens on <a href="https://discord.gg/ACKb28pSSP">Discord</a> &{" "}
-                      <a href="https://t.me/joinchat/v6N_GHY-8kU3ZmRh">Telegram</a>
-                    </li>
                   </ul>
                 </div>
               )}
 
-              {yourCollectibles && yourCollectibles.length > 0 ? (
-                <div></div>
-              ) : (
-                <div class="colorme3">
-                  <h4 style={{ padding: 5 }}>Testimonials:</h4>
-                  <br />
-                  <br />
-                  <div class="Testimonial">
-                    <img src="nfts/testimonial01.png" />
-                    <h5>Corny Internet Bot</h5>
-                    <p>11011101 11011001 1100101 11011101 11011101 11011001 11011101 11011101 1100101</p>
-                  </div>
-                  <div class="Testimonial">
-                    <img src="nfts/testimonial02.png" />
-                    <h5>Large Linux Bot</h5>
-                    <p>
-                      ba bup ba bup bup bup bup kwwaaaaaaaaaaaaa eeeeeuuuueeuuueeuuuu **denga denga**
-                      Krchhhhhhhhhhhhhhhhhhhhhhhhhhh
-                    </p>
-                  </div>
-                  <div class="Testimonial">
-                    <img src="nfts/testimonial03.png" />
-                    <h5>Vicious MotherBoard Bot</h5>
-                    <p>
-                      Beep Boop Bop Bop Moonshot Collective Beep Boop Bot Boop Boop Bloop Beep Boop Boop Bloop Beep{" "}
-                    </p>
-                  </div>
-                </div>
-              )}
+              
             </div>
 
             {yourCollectibles && yourCollectibles.length > 0 ? (
               <div style={{ width: 640, margin: "auto", marginTop: 32, padding: 32 }}>
-                <h4 style={{ padding: 5 }}>Your MoonshotBots 🤖🚀🌕</h4>
+                <h4 style={{ padding: 5 }}>Your Crystals</h4>
                 <br />
                 <br />
 
@@ -640,165 +584,7 @@ function App(props) {
              ""
             )}
 
-            <footer class="colorme" style={{ padding: 64 }}>
-              <h4 style={{ padding: 5 }}>FAQ</h4>
-              <br />
-              <br />
-              <ul id="faq">
-                <li>
-                  <p>
-                    <strong>🙋‍♂️ Why is the MoonshotBots Maximum Supply 303?</strong>
-                    <br />
-                    Because this project was made with &lt;3 in Colorado + our area code out here is 303. #shillcolorado
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <strong>🙋‍♂️ How many Moonshot Bots have been minted so far?</strong>
-                    <br />
-                    {amountMintedAlready && amountMintedAlready.toNumber()} Minted so far of 303 Maximum Possible.
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <strong>🙋‍♀️ When was this project launched?</strong>
-                    <br />
-                    This project was launched at the demo session of the monthly{" "}
-                    <a href="https://moonshotcollective.space">Moonshot Collective</a> call to Moonshot'ers, during the
-                    demo session (a few minutes after 12pm MST on 8/23). Aside from the project authors (Kevin/Austin),
-                    who minted a 1 token each for testing, everyone got the the opportunity to mint their tokens all at
-                    the same time -- Woo Fair Launch!!!1!
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <strong>🙋‍♂️ Why was this project launched?</strong>
-                    <br />
-                    These PFPs were designed to celebrate the BUIDLers in the Moonshot Collective (and the ecosystem
-                    they serve writ large). Builders in this space are doing amazing work!
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <strong>🙋‍♀️ What are all the cool kids doing?</strong>
-                    <br />
-                    You are welcome to purchase 2 MoonshotBots. Keep one for yourself, and send another to your favorite
-                    Builder.
-                    <br />
-                    <br />
-                    Karma FTW!{" "}
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <strong>🙋‍♂️ How is the price calculated?</strong>
-                    <br />
-                    These PFPs are minted on a bonding curve that increases 4.7% each purchase, and starts with a price
-                    of 0.0033 ETH. Here's the bonding curve:
-                    <br />
-                    <a href="https://docs.google.com/spreadsheets/d/1TCdfHjCs21frJyNaR7EYtZ-zZ7xXW8vtoTH9_Qvie70/edit#gid=0">
-                      <img src="chart.png" class="chart" />
-                    </a>
-                    <br />
-                    The price goes up IFF people are willing to buy more MoonshotBots. There are no guarantees that this
-                    will happen; it is probably unlikely to happen. Please buy a MoonshotBot to support public goods or
-                    because you like the art or to show appreciation for your favorite dev, please DO NOT buy them for
-                    other reasons.
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <strong>🙋‍♀️Where does the ETH go when I purchase a MoonshotBot?</strong>
-                    <br />
-                    100% of funds will go to the{" "}
-                    <a href="https://etherscan.io/address/0xde21F729137C5Af1b01d73aF1dC21eFfa2B8a0d6">
-                      Gitcoin Grants Multisig
-                    </a>{" "}
-                    to fund public goods on Gitcoin.
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <strong>🙋‍♂️Which MoonshotBots are the rarest?</strong>
-                    <br />
-                    1. All attributes (legs, arms, face, body, quadratic vs plain, smile) have been distributed
-                    according to a bell curve to the bots.
-                    <br />
-                    2. We have distributed hyper-mega-rare attributes (Quadratic backgrounds, a picture of a Chad, a bow
-                    tie) placed into the PFPs further along the curve.
-                    <br />
-                    3. See for yourself by browsing the bots above, or on{" "}
-                    <a href="https://gitcoin.co/l/moonshotbots_opensea">OpenSea</a>.
-                    <br />
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <strong>🙋‍♂️ Whats the Moonshot Collective?</strong>
-                    <br />
-                    It's the prototyping workstream of the GitcoinDAO. For more information,{" "}
-                    <a href="https://moonshotcollective.space">click here</a>.
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <strong>🙋‍♂️What else should we know?</strong>
-                    <br />
-                    <a href="https://gitcoin.co/grants/">Gitcoin Grants Round 11</a> starts September 8th! It's going to
-                    have new discoverability features, new checkout options, and will feature the launch of{" "}
-                    <a href="https://github.com/dcgtc/dgrants">dGrants</a>, the first decentralized Gitcoin Grants
-                    Round.
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <strong>🙋‍♂️I has another question, where can I get in touch?</strong>
-                    <br />
-                    Tweet at us; <a href="https://twitter.com/owocki">@owocki</a> &{" "}
-                    <a href="https://twitter.com/austingriffith">@austingriffith</a>.
-                  </p>
-                </li>
-              </ul>
-              <br />
-              <a
-                style={{ padding: 8 }}
-                href="https://github.com/austintgriffith/scaffold-eth/tree/moonshot-bots-with-curve"
-              >
-                Github
-              </a>
-              |
-              <a style={{ padding: 8 }} href="https://gitcoin.co/l/moonshotbots_opensea">
-                OpenSea
-              </a>
-              |
-              <a style={{ padding: 8 }} href="https://etherscan.io/token/0x8b13e88ead7ef8075b58c94a7eb18a89fd729b18">
-                EtherScan
-              </a>
-              |
-              <a style={{ padding: 8 }} href="https://t.me/joinchat/v6N_GHY-8kU3ZmRh">
-                Telegram
-              </a>
-              |
-              <a style={{ padding: 8 }} href="https://discord.gg/ACKb28pSSP">
-                Discord
-              </a>
-              |
-              <a style={{ padding: 8 }} href="https://moonshotcollective.space">
-                Moonshot Collective
-              </a>
-              | Art by{" "}
-              <a style={{ padding: 8 }} href="https://Gitcoin.co/theCydonian">
-                @theCydonian
-              </a>
-              /
-              <a style={{ padding: 8 }} href="https://Gitcoin.co/nasehim7">
-                @nasehim7
-              </a>
-              
-              <br />
-              <img src="builtoneth.png" />
-              <br />
-            </footer>
+           
           </Route>
 
           <Route path="/transfers">
