@@ -1,19 +1,16 @@
-import { LinkOutlined } from "@ant-design/icons";
 import { JsonRpcProvider, Web3Provider } from "@ethersproject/providers";
 import { formatEther, parseEther } from "@ethersproject/units";
 import WalletConnectProvider from "@walletconnect/web3-provider";
-import { Alert, Button, Card, Col, Input, List, Row, Space } from "antd";
+import { Alert, Button, Card, Col, List, Row, Space } from "antd";
 import "antd/dist/antd.css";
 import { useUserAddress } from "eth-hooks";
-import { ethers, utils } from "ethers";
 import React, { useCallback, useEffect, useState } from "react";
-import ReactJson from "react-json-view";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Web3Modal from "web3modal";
 import "./App.css";
 // import assets from "./assets.js";
 import { Account, Address, AddressInput, Contract, Faucet, GasGauge, Header, Ramp } from "./components";
-import { DAI_ABI, DAI_ADDRESS, INFURA_ID, NETWORK, NETWORKS } from "./constants";
+import { INFURA_ID, NETWORK, NETWORKS } from "./constants";
 import { Transactor } from "./helpers";
 import {
   useBalance,
@@ -21,7 +18,6 @@ import {
   useContractReader,
   useEventListener,
   useExchangePrice,
-  useExternalContractLoader,
   useGasPrice,
 } from "./hooks";
 
@@ -305,6 +301,7 @@ function App(props) {
     );
   }
   const [transferToAddresses, setTransferToAddresses] = useState({});
+  let priceRightNow;
 
   return (
     <div className="App">
@@ -343,26 +340,23 @@ function App(props) {
                 Created by ya bois <a href="https://twitter.com/le_kag7">@kag</a> &{" "}
                 <a href="https://twitter.com/codenamejason">@codenamejason</a>
               </h2>
-              <h2>
-                ❤️🛠 Seeded on 02/10 @ 9pm EST 
-              </h2>
+              <h2>❤️🛠 Seeded on 02/10 @ 9pm EST</h2>
               <div style={{ padding: 32 }}>
                 {address ? (
                   <Button
                     type={"primary"}
                     onClick={async () => {
-                      let priceRightNow = await readContracts.Crystals.price();
+                      priceRightNow = await readContracts.Crystals.price();
                       tx(writeContracts.Crystals.requestMint(address, { value: priceRightNow }));
                     }}
                   >
-                    MINT for .05Ξ 
+                    MINT for 0.05Ξ
                   </Button>
                 ) : (
                   <Button key="loginbutton" type="primary" onClick={loadWeb3Modal}>
                     connect to mint
                   </Button>
                 )}
-                
 
                 {latestMintedCrystals && latestMintedCrystals.length > 0 ? (
                   <div class="latestBots">
@@ -413,8 +407,6 @@ function App(props) {
                   </ul>
                 </div>
               )}
-
-              
             </div>
 
             {yourCollectibles && yourCollectibles.length > 0 ? (
@@ -481,10 +473,8 @@ function App(props) {
                 />
               </div>
             ) : (
-             ""
+              ""
             )}
-
-           
           </Route>
 
           <Route path="/transfers">
@@ -505,7 +495,6 @@ function App(props) {
             </div>
           </Route>
 
-         
           <Route path="/debugcontracts">
             <Contract
               name="MoonshotBot"
