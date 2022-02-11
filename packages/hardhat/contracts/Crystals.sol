@@ -19,8 +19,8 @@ contract Crystals is ERC721 {
   string [] private uris;
 
   constructor() public ERC721("Crystals", "CRYSTL") {
-    _setBaseURI("https://gateway.pinata.cloud/ipfs/QmdRmZ1UPSALNVuXY2mYPb3T5exn9in1AL3tsema4rY2QF/json/");
-    uris =  [''];
+    _setBaseURI("Chris's Path to Ipfs");
+    uris =  ['1.json', '2.json'];
   }
 
   uint256 public constant limit = 420;
