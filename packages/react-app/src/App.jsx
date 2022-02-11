@@ -34,24 +34,6 @@ const targetNetwork = NETWORKS["localhost"]; // <------- select your target fron
 // 😬 Sorry for all the console logging
 const DEBUG = true;
 
-//EXAMPLE STARTING JSON:
-const STARTING_JSON = {
-  description: "It's actually a bison?",
-  external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
-  image: "https://austingriffith.com/images/paintings/buffalo.jpg",
-  name: "Buffalo",
-  attributes: [
-    {
-      trait_type: "BackgroundColor",
-      value: "green",
-    },
-    {
-      trait_type: "Eyes",
-      value: "googly",
-    },
-  ],
-};
-
 //helper function to "Get" from IPFS
 // you usually go content.toString() after this...
 const getFromIPFS = async hashToGet => {
@@ -312,26 +294,7 @@ function App(props) {
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            {/*
-                🎛 this scaffolding is full of commonly used components
-                this <Contract/> component will automatically parse your ABI
-                and give you a form to interact with it locally
-
-            <div style={{ maxWidth:820, margin: "auto", marginTop:32, paddingBottom:256 }}>
-              <StackGrid
-                columnWidth={200}
-                gutterWidth={16}
-                gutterHeight={16}
-              >
-                {galleryList}
-              </StackGrid>
-            </div>
-            */}
-
-            <div class="colorme">
-              <img class="logo_moonshot sub" src="logo.png" />
-              <img class="logo_moonshot" src="logo1.png" />
-              <img class="logo_moonshot sub" src="logo2.png" />
+            <div class="">
               <br />
               <h1>AI Uniquely Generated Crystals</h1>
 
