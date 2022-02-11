@@ -10,7 +10,7 @@ _  /  / / / /_/ / /_/ /  / / /(__  )_  / / / /_/ / /_ _(__  )     _  __/ / /_/ /
 /_/  /_/  \____/\____//_/ /_//____/ /_/ /_/\____/\__/ /____/      /_/    \____//_/        _  .___/\__,_/ /_.___//_/  /_/  \___/     _\__, / \____/\____/\__,_/   
                                                                                           /_/                                       /____/
 🦧✊ Demand more from PFPs! 👇
-🌱🌱 100% of MoonshotBot Minting Fees go to fund Ethereum Public Goods on Gitcoin Grants 🌱🌱
+🌱🌱 100% of MoonshotBot Minting Fees go to fund Ethereum Public Goods on kag Grants 🌱🌱
 🦧✊🌱100%🌱✊🦧
 
 */
@@ -26,7 +26,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 
 contract Crystals is ERC721 {
 
-  address payable public constant gitcoin = 0xde21F729137C5Af1b01d73aF1dC21eFfa2B8a0d6;
+  address payable public constant kag = 0xde21F729137C5Af1b01d73aF1dC21eFfa2B8a0d6;
 
   using Counters for Counters.Counter;
   Counters.Counter private _tokenIds;
@@ -61,7 +61,7 @@ contract Crystals is ERC721 {
   {
     require( msg.value >= price, "NOT ENOUGH");
     price = (price * 1047) / 1000;
-    (bool success,) = gitcoin.call{value:msg.value}("");
+    (bool success,) = kag.call{value:msg.value}("");
     require( success, "could not send");
     mintItem(to, uris[_tokenIds.current()]);
   }
