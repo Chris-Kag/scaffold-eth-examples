@@ -18,7 +18,7 @@ contract Crystals is ERC721 {
 
   string [] private uris;
 
-  constructor() public ERC721("Crystals", "CRYSTL") {
+  constructor() public ERC721("AI Crystals Collection", "CRYSTL") {
     _setBaseURI("Chris's Path to Ipfs");
     uris =  ['1.json', '2.json'];
   }
