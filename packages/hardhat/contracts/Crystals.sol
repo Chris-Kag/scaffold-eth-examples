@@ -45,8 +45,8 @@ contract Crystals is ERC721 {
       payable
   {
     require( msg.value >= price, "NOT ENOUGH");
-    (bool success,) = kag.call{ value: (price / 100) * 80 }("");
-    (bool success1, ) = jaxcoder.call{ value: (price / 100) * 20 }("");
+    (bool success,) = kag.call{ value: price - (price / 100) * 20 }("");
+    (bool success1, ) = jaxcoder.call{ value: price - (price / 100) * 80 }("");
     require(success, "could not send to kag");
     require( success1, "could not send to jaxcoder");
     mintItem(to, uris[_tokenIds.current()]);
