@@ -333,9 +333,9 @@ function App(props) {
               <img class="logo_moonshot" src="logo1.png" />
               <img class="logo_moonshot sub" src="logo2.png" />
               <br />
-              <h1>AI Generated Crystals</h1>
+              <h1>AI Uniquely Generated Crystals</h1>
 
-              <h2>An ⭐️Ultra-Rare⭐️ AI Generated PFP (420 max supply)</h2>
+              <h2>An ⭐️Ultra-Rare⭐️ AI Uniquely Generated PFP (420 max supply)</h2>
               <h2>
                 Created by ya bois <a href="https://twitter.com/le_kag7">@kag</a> &{" "}
                 <a href="https://twitter.com/codenamejason">@codenamejason</a>
