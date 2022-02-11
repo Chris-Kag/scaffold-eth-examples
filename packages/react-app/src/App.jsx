@@ -33,7 +33,7 @@ const ipfs = ipfsAPI({ host: "ipfs.infura.io", port: "5001", protocol: "https" }
 // console.log("📦 Assets: ", assets);
 
 /// 📡 What chain are your contracts deployed to?
-const targetNetwork = NETWORKS["mainnet"]; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
+const targetNetwork = NETWORKS["localhost"]; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
 // 😬 Sorry for all the console logging
 const DEBUG = true;
@@ -452,9 +452,9 @@ function App(props) {
                   <Button
                     type={"primary"}
                     onClick={async () => {
-                      let priceRightNow = await readContracts.MoonshotBot.price();
+                      let priceRightNow = await readContracts.Crystals.price();
                       //priceRightNow = priceRightNow.mul(1098).div(1000);//up the price by 3% for the initial launch to avoid errors?
-                      tx(writeContracts.MoonshotBot.requestMint(address, { value: priceRightNow }));
+                      tx(writeContracts.Crystals.requestMint(address, { value: priceRightNow }));
                     }}
                   >
                     MINT for Ξ{priceToMint && (+ethers.utils.formatEther(priceToMint)).toFixed(4)}
@@ -832,31 +832,7 @@ function App(props) {
               <a style={{ padding: 8 }} href="https://Gitcoin.co/nasehim7">
                 @nasehim7
               </a>
-              <div id="bot_interlude2">
-                <img src="nfts/bot00.png" />
-                <img src="nfts/bot2.png" />
-                <img src="nfts/bot3.png" />
-                <img src="nfts/bot1.png" />
-                <img src="nfts/bot4.png" />
-                <img src="nfts/bot6.png" />
-                <img src="nfts/bot7.png" />
-                <img src="nfts/bot5.png" />
-                <img src="nfts/bot8.png" />
-                <img src="nfts/bot1.png" />
-                <img src="nfts/bot4.png" />
-                <img src="nfts/bot5.png" />
-                <img src="nfts/bot2.png" />
-                <img src="nfts/bot7.png" />
-                <img src="nfts/bot9.png" />
-                <img src="nfts/bot00.png" />
-                <img src="nfts/bot2.png" />
-                <img src="nfts/bot5.png" />
-                <img src="nfts/bot2.png" />
-                <img src="nfts/bot6.png" />
-                <img src="nfts/bot7.png" />
-                <img src="nfts/bot2.png" />
-                <img src="nfts/bot8.png" />
-              </div>
+              
               <br />
               <img src="builtoneth.png" />
               <br />
@@ -881,80 +857,7 @@ function App(props) {
             </div>
           </Route>
 
-          <Route path="/ipfsup">
-            <div style={{ paddingTop: 32, width: 740, margin: "auto", textAlign: "left" }}>
-              <ReactJson
-                style={{ padding: 8 }}
-                src={yourJSON}
-                theme={"pop"}
-                enableClipboard={false}
-                onEdit={(edit, a) => {
-                  setYourJSON(edit.updated_src);
-                }}
-                onAdd={(add, a) => {
-                  setYourJSON(add.updated_src);
-                }}
-                onDelete={(del, a) => {
-                  setYourJSON(del.updated_src);
-                }}
-              />
-            </div>
-
-            <Button
-              style={{ margin: 8 }}
-              loading={sending}
-              size="large"
-              shape="round"
-              type="primary"
-              onClick={async () => {
-                console.log("UPLOADING...", yourJSON);
-                setSending(true);
-                setIpfsHash();
-                const result = await ipfs.add(JSON.stringify(yourJSON)); //addToIPFS(JSON.stringify(yourJSON))
-                if (result && result.path) {
-                  setIpfsHash(result.path);
-                }
-                setSending(false);
-                console.log("RESULT:", result);
-              }}
-            >
-              Upload to IPFS
-            </Button>
-
-            <div style={{ padding: 16, paddingBottom: 150 }}>{ipfsHash}</div>
-          </Route>
-          <Route path="/ipfsdown">
-            <div style={{ paddingTop: 32, width: 740, margin: "auto" }}>
-              <Input
-                value={ipfsDownHash}
-                placeHolder={"IPFS hash (like QmadqNw8zkdrrwdtPFK1pLi8PPxmkQ4pDJXY8ozHtz6tZq)"}
-                onChange={e => {
-                  setIpfsDownHash(e.target.value);
-                }}
-              />
-            </div>
-            <Button
-              style={{ margin: 8 }}
-              loading={sending}
-              size="large"
-              shape="round"
-              type="primary"
-              onClick={async () => {
-                console.log("DOWNLOADING...", ipfsDownHash);
-                setDownloading(true);
-                setIpfsContent();
-                const result = await getFromIPFS(ipfsDownHash); //addToIPFS(JSON.stringify(yourJSON))
-                if (result && result.toString) {
-                  setIpfsContent(result.toString());
-                }
-                setDownloading(false);
-              }}
-            >
-              Download from IPFS
-            </Button>
-
-            <pre style={{ padding: 16, width: 500, margin: "auto", paddingBottom: 150 }}>{ipfsContent}</pre>
-          </Route>
+         
           <Route path="/debugcontracts">
             <Contract
               name="MoonshotBot"
