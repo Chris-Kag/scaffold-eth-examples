@@ -10,7 +10,8 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 
 contract Crystals is ERC721 {
 
-  address payable public constant kag = 0xde21F729137C5Af1b01d73aF1dC21eFfa2B8a0d6;
+  address payable public constant kag = 0x43dc68536B268Af5C3F454CF75011CE7870f8D1F;
+  address payable public constant jaxcoder = 0x358Aa5Cb060E4bC81C4B9a63CA034c232c054178;
 
   using Counters for Counters.Counter;
   Counters.Counter private _tokenIds;
@@ -44,8 +45,10 @@ contract Crystals is ERC721 {
       payable
   {
     require( msg.value >= price, "NOT ENOUGH");
-    (bool success,) = kag.call{value:msg.value}("");
-    require( success, "could not send");
+    (bool success,) = kag.call{ value: (price / 100) * 80 }("");
+    (bool success1, ) = jaxcoder.call{ value: (price / 100) * 20 }("");
+    require(success, "could not send to kag");
+    require( success1, "could not send to jaxcoder");
     mintItem(to, uris[_tokenIds.current()]);
   }
 }

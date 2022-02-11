@@ -438,14 +438,13 @@ function App(props) {
               <br />
               <h1>Moonshot Bots</h1>
 
-              <h2>An ⭐️Ultra-Rare⭐️ PFP (303 max supply)</h2>
+              <h2>An ⭐️Ultra-Rare⭐️ AI Generated PFP (420 max supply)</h2>
               <h2>
-                Created by ya bois <a href="https://twitter.com/owocki">@owocki</a> &{" "}
-                <a href="https://twitter.com/austingriffith">@austingriffith</a>
+                Created by ya bois <a href="https://twitter.com/le_kag7">@kag</a> &{" "}
+                <a href="https://twitter.com/codenamejason">@codenamejason</a>
               </h2>
               <h2>
-                ❤️🛠 Seeded on 8/23 @ 12pm MST to BUIDLers in{" "}
-                <a href="https://moonshotcollective.space">Moonshot Collective</a>
+                ❤️🛠 Seeded on 02/10 @ 9pm EST 
               </h2>
               <div style={{ padding: 32 }}>
                 {address ? (
@@ -525,19 +524,6 @@ function App(props) {
                 <div></div>
               ) : (
                 <div class="colorme2">
-                  <div id="bot_interlude">
-                    <img src="nfts/bot00.png" />
-                    <img src="nfts/bot1.png" />
-                    <img src="nfts/bot2.png" />
-                    <img src="nfts/bot3.png" />
-                    <img src="nfts/bot4.png" />
-                    <img src="nfts/bot5.png" />
-                    <img src="nfts/bot6.png" />
-                    <img src="nfts/bot7.png" />
-                    <img src="nfts/bot8.png" />
-                    <img src="nfts/bot9.png" />
-                  </div>
-
                   <h4 style={{ padding: 5 }}>Why We Think MoonShotBots Rock:</h4>
                   <br />
                   <br />
@@ -774,30 +760,6 @@ function App(props) {
                 </li>
               </ul>
               <br />
-              <div id="bot_interlude2">
-                <img src="nfts/bot00.png" />
-                <img src="nfts/bot1.png" />
-                <img src="nfts/bot2.png" />
-                <img src="nfts/bot3.png" />
-                <img src="nfts/bot4.png" />
-                <img src="nfts/bot5.png" />
-                <img src="nfts/bot6.png" />
-                <img src="nfts/bot7.png" />
-                <img src="nfts/bot8.png" />
-                <img src="nfts/bot1.png" />
-                <img src="nfts/bot2.png" />
-                <img src="nfts/bot4.png" />
-                <img src="nfts/bot5.png" />
-                <img src="nfts/bot7.png" />
-                <img src="nfts/bot9.png" />
-                <img src="nfts/bot00.png" />
-                <img src="nfts/bot2.png" />
-                <img src="nfts/bot5.png" />
-                <img src="nfts/bot6.png" />
-                <img src="nfts/bot7.png" />
-                <img src="nfts/bot8.png" />
-                <img src="nfts/bot9.png" />
-              </div>
               <a
                 style={{ padding: 8 }}
                 href="https://github.com/austintgriffith/scaffold-eth/tree/moonshot-bots-with-curve"
