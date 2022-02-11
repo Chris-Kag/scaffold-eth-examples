@@ -137,30 +137,18 @@ function App(props) {
   const writeContracts = useContractLoader(userProvider);
   if (DEBUG) console.log("🔐 writeContracts", writeContracts);
 
-  // EXTERNAL CONTRACT EXAMPLE:
-  //
-  // If you want to bring in the mainnet DAI contract it would look like:
-  const mainnetDAIContract = useExternalContractLoader(mainnetProvider, DAI_ADDRESS, DAI_ABI);
-  console.log("🌍 DAI contract on mainnet:", mainnetDAIContract);
-  //
-  // Then read your DAI balance like:
-  const myMainnetDAIBalance = useContractReader({ DAI: mainnetDAIContract }, "DAI", "balanceOf", [
-    "0x34aA3F359A9D614239015126635CE7732c18fDF3",
-  ]);
-  console.log("🥇 myMainnetDAIBalance:", myMainnetDAIBalance);
-
   // keep track of a variable from the contract in the local React state:
-  const balance = useContractReader(readContracts, "MoonshotBot", "balanceOf", [address]);
+  const balance = useContractReader(readContracts, "Crystals", "balanceOf", [address]);
   console.log("🤗 balance:", balance);
 
-  const priceToMint = useContractReader(readContracts, "MoonshotBot", "price");
+  const priceToMint = useContractReader(readContracts, "Crystals", "price");
   console.log("🤗 priceToMint:", priceToMint);
 
-  const amountMintedAlready = useContractReader(readContracts, "MoonshotBot", "totalSupply");
+  const amountMintedAlready = useContractReader(readContracts, "Crystals", "totalSupply");
   console.log("🤗 amountMintedAlready:", amountMintedAlready);
 
   //📟 Listen for broadcast events
-  const transferEvents = useEventListener(readContracts, "MoonshotBot", "Transfer", localProvider, 1);
+  const transferEvents = useEventListener(readContracts, "Crystals", "Transfer", localProvider, 1);
   console.log("📟 Transfer events:", transferEvents);
 
   // track the lastest bots minted
@@ -178,7 +166,7 @@ function App(props) {
       let collectibleUpdate = [];
       for (let tokenIndex = 0; tokenIndex < balance; tokenIndex++) {
         try {
-          console.log("GEtting token index", tokenIndex);
+          console.log("Getting token index", tokenIndex);
           const tokenId = await readContracts.MoonshotBot.tokenOfOwnerByIndex(address, tokenIndex);
           console.log("tokenId", tokenId);
           const tokenURI = await readContracts.MoonshotBot.tokenURI(tokenId);
