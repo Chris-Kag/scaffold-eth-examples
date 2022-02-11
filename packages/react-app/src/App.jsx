@@ -286,7 +286,7 @@ function App(props) {
   let priceRightNow;
 
   return (
-    <div className="App">
+    <div className="bg-gray-400">
       {/* ✏️ Edit the header and change the title to your project name */}
       <Header />
       {networkDisplay}
@@ -313,7 +313,7 @@ function App(props) {
                       tx(writeContracts.Crystals.requestMint(address, { value: priceRightNow }));
                     }}
                   >
-                    MINT for 0.05Ξ
+                    MINT for 0.07Ξ
                   </Button>
                 ) : (
                   <Button key="loginbutton" type="primary" onClick={loadWeb3Modal}>

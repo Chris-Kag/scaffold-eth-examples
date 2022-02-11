@@ -24,7 +24,7 @@ contract Crystals is ERC721 {
   }
 
   uint256 public constant limit = 420;
-  uint256 public price = 0.05 ether;
+  uint256 public price = 0.07 ether;
 
   function mintItem(address to, string memory tokenURI)
       private
