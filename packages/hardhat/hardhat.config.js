@@ -96,6 +96,15 @@ module.exports = {
         mnemonic: mnemonic(),
       },
     },
+    optimism: {
+      url: "https://mainnet.optimism.io",
+      accounts: {
+        mnemonic: mnemonic(),
+      },
+      companionNetworks: {
+        l1: "mainnet",
+      },
+    },
   },
   solidity: {
     compilers: [
