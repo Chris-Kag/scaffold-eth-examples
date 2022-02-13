@@ -139,37 +139,37 @@ function App(props) {
   const yourBalance = balance && balance.toNumber && balance.toNumber();
   const [yourCollectibles, setYourCollectibles] = useState();
 
-  useEffect(() => {
-    const updateYourCollectibles = async () => {
-      let collectibleUpdate = [];
-      for (let tokenIndex = 0; tokenIndex < balance; tokenIndex++) {
-        try {
-          console.log("Getting token index", tokenIndex);
-          const tokenId = await readContracts.Crystals.tokenOfOwnerByIndex(address, tokenIndex);
-          console.log("tokenId", tokenId);
-          const tokenURI = await readContracts.Crystals.tokenURI(tokenId);
-          console.log("tokenURI", tokenURI);
+  // useEffect(() => {
+  //   const updateYourCollectibles = async () => {
+  //     let collectibleUpdate = [];
+  //     for (let tokenIndex = 0; tokenIndex < balance; tokenIndex++) {
+  //       try {
+  //         console.log("Getting token index", tokenIndex);
+  //         const tokenId = await readContracts.Crystals.tokenOfOwnerByIndex(address, tokenIndex);
+  //         console.log("tokenId", tokenId);
+  //         const tokenURI = await readContracts.Crystals.tokenURI(tokenId);
+  //         console.log("tokenURI", tokenURI);
 
-          const ipfsHash = tokenURI.replace("https://aicrystals.mypinata.cloud/ipfs/", "");
-          console.log("ipfsHash", ipfsHash);
+  //         const ipfsHash = tokenURI.replace("https://aicrystals.mypinata.cloud/ipfs/", "");
+  //         console.log("ipfsHash", ipfsHash);
 
-          const jsonManifestBuffer = await getFromIPFS(ipfsHash);
+  //         const jsonManifestBuffer = await getFromIPFS(ipfsHash);
 
-          try {
-            const jsonManifest = JSON.parse(jsonManifestBuffer.toString());
-            console.log("jsonManifest", jsonManifest);
-            collectibleUpdate.push({ id: tokenId, uri: tokenURI, owner: address, ...jsonManifest });
-          } catch (e) {
-            console.log(e);
-          }
-        } catch (e) {
-          console.log(e);
-        }
-      }
-      setYourCollectibles(collectibleUpdate);
-    };
-    updateYourCollectibles();
-  }, [address, yourBalance]);
+  //         try {
+  //           const jsonManifest = JSON.parse(jsonManifestBuffer.toString());
+  //           console.log("jsonManifest", jsonManifest);
+  //           collectibleUpdate.push({ id: tokenId, uri: tokenURI, owner: address, ...jsonManifest });
+  //         } catch (e) {
+  //           console.log(e);
+  //         }
+  //       } catch (e) {
+  //         console.log(e);
+  //       }
+  //     }
+  //     setYourCollectibles(collectibleUpdate);
+  //   };
+  //   updateYourCollectibles();
+  // }, [address, yourBalance]);
 
   //
   // 🧠 This effect will update latestMintedBots by polling when your balance or address changes.
