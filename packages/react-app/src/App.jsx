@@ -298,12 +298,13 @@ function App(props) {
               <br />
               <h1>AI Uniquely Generated Crystals</h1>
 
-              <h2>An ⭐️Ultra-Rare⭐️ AI Uniquely Generated PFP (420 max supply)</h2>
+              <h2>An ⭐️Ultra-Rare⭐️ AI Uniquely Generated Art (420 max supply)</h2>
+              <h2>With 1 Special Easter Egg.</h2>
               <h2>
                 Created by ya bois <a href="https://twitter.com/le_kag7">@chris-kag</a> &{" "}
                 <a href="https://twitter.com/codenamejason">@codenamejason</a>
               </h2>
-              <h2>❤️🛠 Seeded on 12/02 @ 9pm EST</h2>
+              <h2>❤️🛠 Seeded on 13/02 @ 10am EST</h2>
               <div style={{ padding: 32 }}>
                 {address ? (
                   <Button
