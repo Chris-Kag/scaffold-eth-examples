@@ -1,4 +1,4 @@
-pragma solidity >=0.6.0 <0.7.0;
+pragma solidity 0.7.6;
 //SPDX-License-Identifier: MIT
 
 //import "hardhat/console.sol";
@@ -92,4 +92,8 @@ contract Crystals is ERC721 {
     require( success1, "could not send to jaxcoder");
     mintItem(to, uris[_tokenIds.current()]);
   }
+
+  function contractURI() public view returns (string memory) {
+          return "https://aicrystals.mypinata.cloud/ipfs/QmaSH1XJfJPDXPMqNcs5UdjEhYEUxT5tBSD9qxZP3APgB5";
+      }
 }
