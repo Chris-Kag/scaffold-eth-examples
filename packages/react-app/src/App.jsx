@@ -29,7 +29,7 @@ const ipfs = ipfsAPI({ host: "ipfs.infura.io", port: "5001", protocol: "https" }
 // console.log("📦 Assets: ", assets);
 
 /// 📡 What chain are your contracts deployed to?
-const targetNetwork = NETWORKS["rinkeby"]; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
+const targetNetwork = NETWORKS["optimism"]; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
 // 😬 Sorry for all the console logging
 const DEBUG = true;
@@ -297,7 +297,7 @@ function App(props) {
                         const id = item.id;
                         return (
                           <a
-                            href={`https://quixotic.io/asset/opt/0x52782699900DF91B58eCD618e77847C5774dCD2e/${item.id}`}
+                            href={`https://quixotic.io/asset/opt/0x7F313258c747c19f388e4D1d219Eff26a876A743/${item.id}`}
                           >
                             <List.Item style={{ display: "inline-block", border: "none", margin: 10 }}>
                               <Card
