@@ -16,15 +16,15 @@ const sleep = (ms) =>
 const main = async () => {
   console.log("\n\n 📡 Deploying...\n");
 
-  const CrytalsContract = await deploy("Crystals");
+  //const CrytalsContract = await deploy("Crystals");
 
   await sleep(60000);
 
-  await run("verify:verify", {
-    address: CrytalsContract.address,
-    contract: "contracts/Crystals.sol:Crystals",
-    contractArguments: [],
-  });
+  // await run("verify:verify", {
+  //   address: CrytalsContract.address,
+  //   contract: "contracts/Crystals.sol:Crystals",
+  //   contractArguments: [],
+  // });
 
   console.log(
     " 💾  Artifacts (address, abi, and args) saved to: ",

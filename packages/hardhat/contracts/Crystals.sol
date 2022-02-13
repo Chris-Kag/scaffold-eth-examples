@@ -71,7 +71,7 @@ contract Crystals is ERC721 {
       private
       returns (uint256)
   {
-      require( _tokenIds.current() < limit , "DONE MINTING");
+      require( _tokenIds.current() <= limit , "DONE MINTING");
       _tokenIds.increment();
 
       uint256 id = _tokenIds.current();
