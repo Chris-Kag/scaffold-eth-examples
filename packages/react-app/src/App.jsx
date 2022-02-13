@@ -1,7 +1,7 @@
 import { JsonRpcProvider, Web3Provider } from "@ethersproject/providers";
-import { formatEther, parseEther } from "@ethersproject/units";
+import { formatEther } from "@ethersproject/units";
 import WalletConnectProvider from "@walletconnect/web3-provider";
-import { Alert, Button, Card, Col, List, Row, Space } from "antd";
+import { Alert, Button, Card, List, Row, Space } from "antd";
 import "antd/dist/antd.css";
 import { useUserAddress } from "eth-hooks";
 import React, { useCallback, useEffect, useState } from "react";
@@ -9,7 +9,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Web3Modal from "web3modal";
 import "./App.css";
 // import assets from "./assets.js";
-import { Account, Address, AddressInput, Contract, Faucet, GasGauge, Header, Ramp } from "./components";
+import { Account, Address, AddressInput, Contract, Header } from "./components";
 import { INFURA_ID, NETWORK, NETWORKS } from "./constants";
 import { Transactor } from "./helpers";
 import {
@@ -104,8 +104,8 @@ function App(props) {
   if (DEBUG) console.log("💵 yourLocalBalance", yourLocalBalance ? formatEther(yourLocalBalance) : "...");
 
   // Just plug in different 🛰 providers to get your balance on different chains:
-  const yourMainnetBalance = useBalance(mainnetProvider, address);
-  if (DEBUG) console.log("💵 yourMainnetBalance", yourMainnetBalance ? formatEther(yourMainnetBalance) : "...");
+  // const yourMainnetBalance = useBalance(mainnetProvider, address);
+  // if (DEBUG) console.log("💵 yourMainnetBalance", yourMainnetBalance ? formatEther(yourMainnetBalance) : "...");
 
   // Load in your local 📝 contract and read a value from it:
   const readContracts = useContractLoader(localProvider);
@@ -119,8 +119,8 @@ function App(props) {
   const balance = useContractReader(readContracts, "Crystals", "balanceOf", [address]);
   console.log("🤗 balance:", balance);
 
-  const priceToMint = useContractReader(readContracts, "Crystals", "price");
-  console.log("🤗 priceToMint:", priceToMint);
+  // const priceToMint = useContractReader(readContracts, "Crystals", "price");
+  // console.log("🤗 priceToMint:", priceToMint);
 
   const amountMintedAlready = useContractReader(readContracts, "Crystals", "totalSupply");
   console.log("🤗 amountMintedAlready:", amountMintedAlready);
@@ -247,41 +247,6 @@ function App(props) {
     setRoute(window.location.pathname);
   }, [setRoute]);
 
-  let faucetHint = "";
-  const faucetAvailable =
-    localProvider &&
-    localProvider.connection &&
-    localProvider.connection.url &&
-    localProvider.connection.url.indexOf(window.location.hostname) >= 0 &&
-    !process.env.REACT_APP_PROVIDER &&
-    price > 1;
-
-  const [faucetClicked, setFaucetClicked] = useState(false);
-  if (
-    !faucetClicked &&
-    localProvider &&
-    localProvider._network &&
-    localProvider._network.chainId == 31337 &&
-    yourLocalBalance &&
-    formatEther(yourLocalBalance) <= 0
-  ) {
-    faucetHint = (
-      <div style={{ padding: 16 }}>
-        <Button
-          type={"primary"}
-          onClick={() => {
-            faucetTx({
-              to: address,
-              value: parseEther("0.01"),
-            });
-            setFaucetClicked(true);
-          }}
-        >
-          💰 Grab funds from the faucet ⛽️
-        </Button>
-      </div>
-    );
-  }
   const [transferToAddresses, setTransferToAddresses] = useState({});
   let priceRightNow;
 
@@ -331,7 +296,9 @@ function App(props) {
                       renderItem={item => {
                         const id = item.id;
                         return (
-                          <a href={`https://quixotic.io/asset/opt/0x52782699900DF91B58eCD618e77847C5774dCD2e/${item.id}`}>
+                          <a
+                            href={`https://quixotic.io/asset/opt/0x52782699900DF91B58eCD618e77847C5774dCD2e/${item.id}`}
+                          >
                             <List.Item style={{ display: "inline-block", border: "none", margin: 10 }}>
                               <Card
                                 style={{ borderBottom: "none", border: "none", background: "none" }}
@@ -366,7 +333,10 @@ function App(props) {
                   <br />
                   <br />
                   <ul class="rocks">
-                    <li>💎 A collection of 420 AI uniquely generated Crystals + 1 Easter Egg in total, revealing beautiful generative art now available on Optimism.</li>
+                    <li>
+                      💎 A collection of 420 AI uniquely generated Crystals + 1 Easter Egg in total, revealing beautiful
+                      generative art now available on Optimism.
+                    </li>
                     <li>🖼️ High Resolution NFT art.</li>
                     <li>👑 Ultra Super Mega Giga-Chad Rare</li>
                   </ul>
@@ -487,26 +457,11 @@ function App(props) {
           logoutOfWeb3Modal={logoutOfWeb3Modal}
           blockExplorer={blockExplorer}
         />
-        {faucetHint}
       </div>
 
       {/* 🗺 Extra UI like gas price, eth price, faucet, and support: */}
       <div style={{ position: "fixed", textAlign: "left", left: 0, bottom: 20, padding: 10 }}>
-        <Row align="middle" gutter={[4, 4]}>
-        </Row>
-
-        <Row align="middle" gutter={[4, 4]}>
-          <Col span={24}>
-            {
-              /*  if the local provider has a signer, let's show the faucet:  */
-              faucetAvailable ? (
-                <Faucet localProvider={localProvider} price={price} ensProvider={mainnetProvider} />
-              ) : (
-                ""
-              )
-            }
-          </Col>
-        </Row>
+        <Row align="middle" gutter={[4, 4]}></Row>
       </div>
     </div>
   );
