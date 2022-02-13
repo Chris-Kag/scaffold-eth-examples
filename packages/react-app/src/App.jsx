@@ -362,7 +362,7 @@ function App(props) {
                         <Card
                           title={
                             <div>
-                              <span style={{ fontSize: 16, marginRight: 8 }}>#{id}</span> {item.name}
+                              {item.name}
                             </div>
                           }
                         >
