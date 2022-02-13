@@ -145,9 +145,9 @@ function App(props) {
       for (let tokenIndex = 0; tokenIndex < balance; tokenIndex++) {
         try {
           console.log("Getting token index", tokenIndex);
-          const tokenId = await readContracts.MoonshotBot.tokenOfOwnerByIndex(address, tokenIndex);
+          const tokenId = await readContracts.Crystals.tokenOfOwnerByIndex(address, tokenIndex);
           console.log("tokenId", tokenId);
-          const tokenURI = await readContracts.MoonshotBot.tokenURI(tokenId);
+          const tokenURI = await readContracts.Crystals.tokenURI(tokenId);
           console.log("tokenURI", tokenURI);
 
           const ipfsHash = tokenURI.replace("https://aicrystals.mypinata.cloud/ipfs/", "");
@@ -426,7 +426,7 @@ function App(props) {
                             style={{ border: "1px solid rgb(218, 88, 146)" }}
                             onClick={() => {
                               console.log("writeContracts", writeContracts);
-                              tx(writeContracts.MoonshotBot.transferFrom(address, transferToAddresses[id], id));
+                              tx(writeContracts.Crystals.transferFrom(address, transferToAddresses[id], id));
                             }}
                           >
                             Transfer
