@@ -150,7 +150,7 @@ function App(props) {
           const tokenURI = await readContracts.MoonshotBot.tokenURI(tokenId);
           console.log("tokenURI", tokenURI);
 
-          const ipfsHash = tokenURI.replace("https://gateway.pinata.cloud/ipfs/", "");
+          const ipfsHash = tokenURI.replace("https://aicrystals.mypinata.cloud/ipfs/", "");
           console.log("ipfsHash", ipfsHash);
 
           const jsonManifestBuffer = await getFromIPFS(ipfsHash);
@@ -186,7 +186,7 @@ function App(props) {
             try {
               let tokenId = transferEvents[botIndex].tokenId.toNumber();
               const tokenURI = await readContracts.Crystals.tokenURI(tokenId);
-              const ipfsHash = tokenURI.replace("https://gateway.pinata.cloud/ipfs/", "");
+              const ipfsHash = tokenURI.replace("https://aicrystals.mypinata.cloud/ipfs/", "");
               const jsonManifestBuffer = await getFromIPFS(ipfsHash);
 
               try {
@@ -300,10 +300,10 @@ function App(props) {
 
               <h2>An ⭐️Ultra-Rare⭐️ AI Uniquely Generated PFP (420 max supply)</h2>
               <h2>
-                Created by ya bois <a href="https://twitter.com/le_kag7">@kag</a> &{" "}
+                Created by ya bois <a href="https://twitter.com/le_kag7">@chris-kag</a> &{" "}
                 <a href="https://twitter.com/codenamejason">@codenamejason</a>
               </h2>
-              <h2>❤️🛠 Seeded on 02/10 @ 9pm EST</h2>
+              <h2>❤️🛠 Seeded on 12/02 @ 9pm EST</h2>
               <div style={{ padding: 32 }}>
                 {address ? (
                   <Button
@@ -330,13 +330,13 @@ function App(props) {
                       renderItem={item => {
                         const id = item.id;
                         return (
-                          <a href={`https://opensea.io/assets/0x8b13e88EAd7EF8075b58c94a7EB18A89FD729B18/${item.id}`}>
+                          <a href={`https://quixotic.io/asset/opt/0x52782699900DF91B58eCD618e77847C5774dCD2e/${item.id}`}>
                             <List.Item style={{ display: "inline-block", border: "none", margin: 10 }}>
                               <Card
                                 style={{ borderBottom: "none", border: "none", background: "none" }}
                                 title={
                                   <div style={{ fontSize: 16, marginRight: 8, color: "white" }}>
-                                    <span>#{id}</span> {item.name}
+                                    <span></span> {item.name}
                                   </div>
                                 }
                               >
@@ -361,7 +361,7 @@ function App(props) {
                 <div></div>
               ) : (
                 <div class="colorme2">
-                  <h4 style={{ padding: 5 }}>Why We Think Crystals Rock:</h4>
+                  <h4 style={{ padding: 1 }}>Why We Think Crystals Rock:</h4>
                   <br />
                   <br />
                   <ul class="rocks">
