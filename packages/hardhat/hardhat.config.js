@@ -97,7 +97,7 @@ module.exports = {
       },
     },
     optimism: {
-      url: "https://mainnet.optimism.io",
+      url: "https://opt-mainnet.g.alchemy.com/v2/8NqXhHqnEeaQMrH24kc3s2HlnHqsVrKq",
       accounts: {
         mnemonic: mnemonic(),
       },

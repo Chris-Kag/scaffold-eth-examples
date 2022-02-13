@@ -1,7 +1,7 @@
 import { JsonRpcProvider, Web3Provider } from "@ethersproject/providers";
 import { formatEther } from "@ethersproject/units";
 import WalletConnectProvider from "@walletconnect/web3-provider";
-import { Alert, Button, Card, List, Row, Space } from "antd";
+import { Alert, Button, Card, List, Row, Space, Col } from "antd";
 import "antd/dist/antd.css";
 import { useUserAddress } from "eth-hooks";
 import React, { useCallback, useEffect, useState } from "react";
@@ -56,7 +56,7 @@ if (DEBUG) console.log("📡 Connecting to Mainnet Ethereum");
 
 // attempt to connect to our own scaffold eth rpc and if that fails fall back to infura...
 const scaffoldEthProvider = new JsonRpcProvider("https://rpc.scaffoldeth.io:48544");
-const mainnetInfura = new JsonRpcProvider("https://mainnet.infura.io/v3/" + INFURA_ID);
+const mainnetInfura = new JsonRpcProvider("https://eth-mainnet.alchemyapi.io/v2/6zO-rkFbwGBCrazj7ZTW3o56J0ChdtON");
 // ( ⚠️ Getting "failed to meet quorum" errors? Check your INFURA_I
 
 // 🏠 Your local provider is usually pointed at your local blockchain
@@ -461,7 +461,22 @@ function App(props) {
 
       {/* 🗺 Extra UI like gas price, eth price, faucet, and support: */}
       <div style={{ position: "fixed", textAlign: "left", left: 0, bottom: 20, padding: 10 }}>
-        <Row align="middle" gutter={[4, 4]}></Row>
+        <Row align="middle" gutter={[4, 4]}><Col span={8} style={{ textAlign: "center", opacity: 1 }}>
+             <Button
+               onClick={() => {
+                 window.open("https://t.me/joinchat/KByvmRe5wkR-8F_zz6AjpA");
+               }}
+               size="large"
+               shape="round"
+             >
+               <span style={{ marginRight: 8 }} role="img" aria-label="support">
+                 💬
+               </span>
+               Support
+             </Button>
+           </Col>
+        </Row>
+
       </div>
     </div>
   );
